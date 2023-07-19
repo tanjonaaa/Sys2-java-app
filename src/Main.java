@@ -1,12 +1,10 @@
 import java.sql.*;
-
 public class Main {
     static final String DB_HOST = "localhost";
     static final String DB_NAME = "sys2";
     static final String DB_USER = "tanjona";
     static final String DB_PASS = "1234";
     private static Connection connection = getConnection();
-
     public static void main(String[] args) {
         if(args[0].equals("readconnections")){
             displayConnections(Integer.parseInt(args[1]));
