@@ -1,3 +1,5 @@
+package com.example;
+
 import java.sql.*;
 public class Main {
     static final String DB_HOST = "localhost";
