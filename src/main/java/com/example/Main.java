@@ -1,5 +1,4 @@
 package com.example;
-
 import java.sql.*;
 public class Main {
     static final String DB_HOST = "localhost";
@@ -53,7 +52,7 @@ public class Main {
             while(results.next()){
                 System.out.println(
                         results.getString("id")+" - "+
-                        results.getString("name")+", Dernière connexion: "+
+                                results.getString("name")+", Dernière connexion: "+
                                 results.getTimestamp("connection_datetime")
                 );
             }
