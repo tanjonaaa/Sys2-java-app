@@ -3,7 +3,7 @@ import java.sql.*;
 public class Main {
     static final String DB_HOST = "localhost";
     static final String DB_NAME = "sys2";
-    static final String DB_USER = "tanjona";
+    static final String DB_USER = "test";
     static final String DB_PASS = "1234";
     private static Connection connection = getConnection();
     public static void main(String[] args) {
@@ -31,11 +31,11 @@ public class Main {
     public static void insertNewConnection(String name){
         Connection myConnection = getConnection();
         try{
-            String sql = "INSERT INTO \"connection\" (name) VALUES (?)";
+            String sql = "INSERT INTO \"connection\" (firstname) VALUES (?)";
             PreparedStatement statement = myConnection.prepareStatement(sql);
             statement.setString(1, name);
             int rowCount = statement.executeUpdate();
-            System.out.println("Vous avez créé : "+rowCount+" nouvelle connexion");
+            System.out.println("Vous avez cree : "+rowCount+" nouvelle connexion");
             statement.close();
         }catch (SQLException e){
             e.printStackTrace();
@@ -46,13 +46,13 @@ public class Main {
         try{
             String sql = "SELECT * FROM \"connection\" ORDER BY connection_datetime DESC LIMIT ?";
             PreparedStatement statement = myConnection.prepareStatement(sql);
-            System.out.println("-----Liste des dernières connexions-----");
+            System.out.println("-----Liste des dernieres connexions-----");
             statement.setInt(1, number);
             ResultSet results = statement.executeQuery();
             while(results.next()){
                 System.out.println(
                         results.getString("id")+" - "+
-                                results.getString("name")+", Dernière connexion: "+
+                                results.getString("firstname")+", Derniere connexion: "+
                                 results.getTimestamp("connection_datetime")
                 );
             }
