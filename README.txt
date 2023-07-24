@@ -1,1 +1,0 @@
-The Java app that will be used for the SYS2 exam (Groupe H)
