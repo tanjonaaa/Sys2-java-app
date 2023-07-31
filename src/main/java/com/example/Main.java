@@ -3,14 +3,20 @@ import java.sql.*;
 public class Main {
     static final String DB_HOST = "localhost";
     static final String DB_NAME = "sys2";
-    static final String DB_USER = "test";
+    static final String DB_USER = "tanjona";
     static final String DB_PASS = "1234";
     private static Connection connection = getConnection();
     public static void main(String[] args) {
         if(args[0].equals("readconnections")){
-            displayConnections(Integer.parseInt(args[1]));
+            if(Integer.parseInt(args[1]) > 0){
+                displayConnections(Integer.parseInt(args[1]));
+            }
         } else if(args[0].equals("newconnection")) {
             insertNewConnection(args[1]);
+        } else {
+            System.out.println("L'argument que vous avez rentre est invalide \n");
+            System.out.println("Rentrez: `newconnection [nom]` pour inserer une nouvelle connexion");
+            System.out.println("Rentrez: `readconnections [nombre]` pour voir les [nombre] dernieres connexions");
         }
     }
     public static Connection getConnection(){
